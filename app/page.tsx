@@ -1,14 +1,20 @@
-import { getCurrentSession } from "@/lib/auth";
+import HeroSlider from "@/components/layout/HeroSlider";
+import SalesCampaignBanner from "@/components/layout/SalesCampaignBanner";
+import ProductGrid from "@/components/product/ProductGrid";
+import { getAllProducts } from "@/sanity/lib/client";
 
 
 export default async function Home() {
 
-  const { user } = await getCurrentSession();
+  const products = await getAllProducts();
   
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      {JSON.stringify(user)}
-    </div>
+    <>
+    <SalesCampaignBanner/>
+    <HeroSlider/>
+    <ProductGrid products={products} />
+    </>
   );
 }
 

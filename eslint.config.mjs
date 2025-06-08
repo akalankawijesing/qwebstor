@@ -13,7 +13,19 @@ const eslintConfig = [
   ...compat.extends("next/core-web-vitals", "next/typescript"),
 
   {
-    ignores: ["app/generated/**"],
+        ignores: [
+      "app/generated/**",
+      // Add Sanity-specific ignores below
+      "sanity/**",         // Ignores entire sanity directory
+      "studio/**",         // Common alternative directory name
+      "schemas/**",        // Schema definitions
+      "plugins/**",        // Sanity plugins
+      "scripts/**",        // Sanity scripts
+      "sanity.config.ts",  // Config files
+      "sanity.config.js",
+      "sanity.cli.ts",
+      "sanity.cli.js"
+    ],
   },
 ];
 
